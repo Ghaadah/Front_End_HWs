@@ -1,9 +1,10 @@
 const elem = document.querySelector("input");
+let number, numberString, numberRE;
 let check = document.getElementById("check");
 check.innerHTML = "";
 
 let handleInput = () => {
-  const number = elem.value;
+  let number = elem.value;
   let numberString = number.toString();
   let numberRev = numberString.split("").reverse().join("");
   if (number < 0) {
@@ -12,11 +13,11 @@ let handleInput = () => {
     return;
   } else {
     if (numberString === numberRev) {
-      check.innerHTML = "It is plindrome";
-      check.style.color = "blue";
+      check.innerHTML = "Yes, This is a plindrome!";
+      check.style.color = "green";
     } else {
-      check.innerHTML = "It is not a plindrome";
-      check.style.color = "gray";
+      check.innerHTML = "No, Try again.";
+      check.style.color = "red";
     }
   }
   return;
