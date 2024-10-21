@@ -1,23 +1,23 @@
 const elem = document.querySelector("input");
-let number, numberString, numberRE;
-let check = document.getElementById("check");
-check.innerHTML = "";
 
 let handleInput = () => {
-  let number = elem.value;
+  const number = elem.value;
   let numberString = number.toString();
   let numberRev = numberString.split("").reverse().join("");
+  console.log(number, numberString, numberRev);
+
+  let check = document.getElementById("check");
+  check.innerText = "";
   if (number < 0) {
-    check.innerHTML = "Not Vaild! Please enter a positve number";
-    check.style.color = "red";
-    return;
+    check.innerText = "Not Vaild! Please enter a positve number";
+    check.style.color = "#FF0000";
   } else {
     if (numberString === numberRev) {
-      check.innerHTML = "Yes, This is a plindrome!";
-      check.style.color = "green";
+      check.innerText = "Yes, This is a plindrome!";
+      check.style.color = "#556B2F";
     } else {
-      check.innerHTML = "No, Try again.";
-      check.style.color = "red";
+      check.innerText = "No, Try again.";
+      check.style.color = "#FF0000";
     }
   }
   return;
