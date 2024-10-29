@@ -10,7 +10,7 @@
 8. grid-column-end : span 5;
 9. grid-column-start: span 3;
 10. grid-column : 4/6;
-11. grid-column : 3/5;
+11. grid-column : span 3/5;
 12. grid-row-start: 3;
 13. grid-row : 3/6;
 14. - grid- column-start: 2;
@@ -27,6 +27,6 @@
 23. grid-template-columns: 1fr 5fr;
 24. grid-template-columns: 50px 1fr 1fr 1fr 50px;
 25. grid-template-columns: 75px 3fr 2fr;
-26. grid-template-rows: 50px 1fr 1fr 1fr 1fr;
+26. grid-template-rows: 50px 0fr 0fr 0fr 1fr;
 27. grid-template: 60% /200px;
-28. grid-template: 4fr 50px/20% 4fr;
+28. grid-template: 1fr 50px/1fr 4fr;
