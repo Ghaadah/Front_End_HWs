@@ -1,7 +1,7 @@
 // Add your code here
 import characters from "./02-data.js";
 
-//userInput.addEventListener("click", handleClick);
+userInput.addEventListener("click", handleClick);
 Search.addEventListener("click", handleClick);
 
 const userText = document.getElementById("userInput");
@@ -12,20 +12,35 @@ function handleClick() {
   resultDiv.innerHTML = "";
   characters.forEach((element) => {
     if (element.name.toLowerCase().includes(userText)) {
-      //creating the card
+      //true - creating the card
       const card = document.createElement("div");
-      card.classList.add("card");// what is the difference between classList and ClassName?
-      resultDiv.appendChild(card);
+      card.className = "card";
+      card.className = "m-2";
+      card.className = "bg-white";
+      card.style.width = "300px";
+
+      const cardBody = document.createElement("div");
+      cardBody.className = "card-body";
 
       const cardTitle = document.createElement("h3");
-      cardTitle.innerHTML = element.name ;
-      cardTitle.classList.add("card-Title");
-      card.appendChild(cardTitle);
+      cardTitle.className = "card-title";
+      cardTitle.textContent = element.name;
+
+      // //to highlight the similar text
+      // const highlighText = element.name.replace(
+      //   new RegExp("(${userText})", "gi"),
+      //   (match) => `span style="background-color:yellow>${match}</span>`
+      // );
+      // cardTitle.innerHTML = highlighText;
 
       const cardtext = document.createElement("p");
+      cardtext.className = "card-p";
       cardtext.textContent = "Birth Year: " + element.birth_year;
-      card.appendChild(cardtext);
+
+      cardBody.appendChild(cardTitle);
+      cardBody.appendChild(cardtext);
+      card.appendChild(cardBody);
+      resultDiv.appendChild(card);
     }
   });
 }
-
