@@ -1,9 +1,6 @@
 // Add your code here
-const BodyColor = document.getElementById("bodyColor");
 const button = document.getElementById("toggle");
 const userInput = document.getElementById("userInput");
-let changeTime = userInput.value;
-console.log(changeTime);
 
 //randomColor
 const randomColor = () => {
@@ -13,36 +10,30 @@ const randomColor = () => {
   const A = 0.5; //softer effect
   return `rgba(${R},${G},${B},${A})`;
 };
-//Apply to the body background at window onload
-window.addEventListener("load", () => {
-  console.log("page is loaded");
 
-  //color should start randomaly changing
-  const changeBodyColor = () => {
-    if (changeTime > 0) {
-      BodyColor.style.background = randomColor();
+//color should start randomaly changing
+const changeBodyColor = () => {
+  BodyColor.style.background = randomColor();
+};
+const handleClick = (() => {
+  let change = null; //interval ID
+  let isRunning = false;
+
+  return function () {
+    let changeTime = Number(userInput.value);
+
+    if (!isRunning) {
+      changeBodyColor();
+      change = setInterval(changeBodyColor, changeTime * 1000);
+      button.textContent = "Stop";
+      button.classList.add("bg-danger");
+    } else {
+      clearInterval(change);
+      button.textContent = "Start";
+      button.classList.remove("bg-danger");
     }
-    //document.body.style.backgroundColor= randomColor()
+    isRunning = !isRunning;
   };
+})();
 
-  //set time 3 seconds
-  setInterval(changeBodyColor, changeTime * 1000);
-  if (changeTime > 0) {
-    changeBodyColor();
-  }
-});
-
-button.addEventListener("click", () => {
-  if (button.value === "Start") {
-    button.value = "Stop";
-    button.textContent = "Stop";
-    button.style.background = "#dc3545"; //red
-    changeTime = 0;
-    BodyColor.style.background = "#343a40";
-  } else {
-    button.value = "Start";
-    button.textContent = "Start";
-    button.style.background = "#0d6efd"; //blue
-    changeTime = userInput.value;
-  }
-});
+button.addEventListener("click", handleClick);

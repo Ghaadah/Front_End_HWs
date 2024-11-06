@@ -1,5 +1,5 @@
 // Add your code here
-
+document.addEventListener()
 const getForm = document.getElementById("formItems");
 const printArea = document.getElementById("print");
 

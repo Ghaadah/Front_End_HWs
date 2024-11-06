@@ -1,29 +1,22 @@
-// Add your code here
-
 const userInput = document.getElementById("userInput");
 const Text = document.getElementById("para");
-const str = Text.innerText; // originalText
+const originalText = Text.textContent;
 
 const handleKeyDown = () => {
-  const inputText = userInput.value.trim(); //remove the white spaces
-  //case 1: blank - no format
-  if (inputText === "") {
-    Text.innerHTML = str;
-    return;
-  }
+  const searchText = userInput.value.trim();
 
-  const regexp = new RegExp(inputText, "gi"); //Case-insensitive search
+  if (searchText.length > 0) {
+    const TextParts = originalText.split(/\b/);
 
-  const matches = str.match(regexp);
-  console.log(matches);
-  let highlightedText = str;
-
-  for (let match of matches) {
-    highlightedText = highlightedText.replace(regexp, (match) => {
-      return `<span style = "background-color : yellow">${match}</span>`; // Highlight the match
+    const highlightedText = TextParts.map((wordInText) => {
+      if (wordInText.toLowerCase() === searchText.toLowerCase()) {
+        return `<span style = "background-color : yellow">${wordInText}</span>`; // Highlight the match
+      }
+      return wordInText;
     });
-    Text.innerHTML = highlightedText; // Update paragraph with highlighted text
+    Text.innerHTML = highlightedText.join("");
+  } else {
+    Text.innerHTML = originalText;
   }
 };
 userInput.addEventListener("keydown", handleKeyDown);
-//input.addEventListener("keydown", handleKeyDown);
