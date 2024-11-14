@@ -1,5 +1,3 @@
-const { response } = require("express");
-
 const elem = document.querySelector("input");
 
 let handleInput = () => {
@@ -25,4 +23,3 @@ let handleInput = () => {
   return;
 };
 elem.addEventListener("input", handleInput);
-
