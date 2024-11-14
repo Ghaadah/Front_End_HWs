@@ -1,0 +1,30 @@
+{
+  "name": "react",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@axe-core/react": "^4.10.1",
+    "@popperjs/core": "2.11.8",
+    "@types/react": "18.3.12",
+    "axe": "12.2.9",
+    "axios": "0.16.2",
+    "bootstrap": "5.3.3",
+    "chart.js": "4.4.6",
+    "core": "2.0.14",
+    "react": "18.3.1",
+    "react-bootstrap": "2.10.5",
+    "react-chartjs-2": "5.2.0",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.28.0",
+    "undefined": "0.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-scripts": "latest"
+  }
+}
